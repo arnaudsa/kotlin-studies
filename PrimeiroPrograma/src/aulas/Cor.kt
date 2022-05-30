@@ -1,4 +1,4 @@
-package aula02
+package aulas
 
 enum class Cor (private val vermelho:Int, private val verde:Int, private val azul:Int) {
     VERMELHO(255,0,0),

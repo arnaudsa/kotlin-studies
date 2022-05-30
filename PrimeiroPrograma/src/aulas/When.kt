@@ -1,4 +1,4 @@
-package aula02
+package aulas
 
 fun obterMnemonica(cor: Cor) =
     when(cor){

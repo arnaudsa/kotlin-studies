@@ -1,4 +1,4 @@
-package aula02
+package aulas
 
 class Pessoa(
     val nome: String,

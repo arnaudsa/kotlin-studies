@@ -1,4 +1,4 @@
-package aula02
+package aulas
 
 fun main(args: Array<String>) {
     val nome = "Ana Luiza"

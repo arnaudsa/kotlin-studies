@@ -127,3 +127,69 @@ fun main(args: Array<String>) {
     println(obterTemperatura(Cor.VERMELHO))
 }
 ```
+
+### Smart Casts
+<p>No Kotlin quando fazemos a verificação de um type object não se faz necessário o cast explicito, pois o compilador já fez o trabalho de Cast</p>
+
+```kotlin
+interface Expressao
+
+class Numero(val valor: Int): Expressao
+class Soma(val esquerdo: Expressao, val direito: Expressao): Expressao
+
+fun avaliacao(expressao: Expressao): Int{
+    if(expressao is Numero){
+        return expressao.valor
+    }
+
+    if (expressao is Soma){
+        return avaliacao(expressao.esquerdo) + avaliacao(expressao.direito)
+    }
+
+    throw IllegalArgumentException ("Expressão desconhecida")
+}
+
+fun main(args: Array<String>) {
+    val resultado = avaliacao(Soma( Soma(Numero(1), Numero(2)), Numero(4)))
+    println(resultado)
+}
+```
+
+### Bloco como ramificações if e when
+<p>Ambos if e when pode ter blocos como ramificações, a última expressão do bloco é o resultado</p>
+
+```kotlin
+interface ExpressaoA
+
+class Num(val valor: Int): ExpressaoA
+class Som(val esquerdo: ExpressaoA, val direito: ExpressaoA): ExpressaoA
+
+fun avaliacao(expressao: ExpressaoA) :Int =
+    when(expressao){
+        is Num -> { // Estamos utilizando um bloco, é a última linha desse bloco é o resultado
+            print("Expressão com número ${expressao.valor}")
+            expressao.valor
+        }
+        is Som -> avaliacao(expressao.direito) + avaliacao(expressao.esquerdo)
+        else -> throw IllegalArgumentException ("Expressão desconhecida")
+    }
+```
+
+### Estrutura de Repetição
+<p>As estrutura de repetição While e Do While é igual ao Java, porém o for utiliza o conceito de range.</p>
+
+```kotlin
+fun fizzBuzz(numero: Int) = when {
+    numero % 15 == 0 -> "FizzBuzz "
+    numero % 3 == 0 -> "Fizz "
+    numero % 5 == 0 -> "Buzz "
+    else -> "$numero"
+}
+
+fun main(args: Array<String>) {
+    for (numero in 1..100){
+        println(fizzBuzz(numero))
+    }
+}
+```
+

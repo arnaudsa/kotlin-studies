@@ -1,4 +1,4 @@
-package aula02
+package aulas
 
 class Retangulo(val altura: Int, val largura: Int) {
     // Podemos criar um acessor customizado dessa forma
