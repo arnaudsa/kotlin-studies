@@ -87,6 +87,7 @@ class Retangulo(val altura: Int, val largura: Int) {
 
 }
 ```
+--------------------------------------
 ### Enums
 <p>Caso precisemos criar uma função dentro de uma enum será necessário a utilização do <b>ponto e vírgula(;)</b></p>
 
@@ -101,7 +102,7 @@ enum class Cor (private val vermelho:Int, private val verde:Int, private val azu
     fun rgb() = ((vermelho * 256 + verde) * 256 + azul)
 }
 ```
-
+--------------------------------------
 
 ### When
 ```kotlin
@@ -127,6 +128,7 @@ fun main(args: Array<String>) {
     println(obterTemperatura(Cor.VERMELHO))
 }
 ```
+--------------------------------------
 
 ### Smart Casts
 <p>No Kotlin quando fazemos a verificação de um type object não se faz necessário o cast explicito, pois o compilador já fez o trabalho de Cast</p>
@@ -155,6 +157,7 @@ fun main(args: Array<String>) {
 }
 ```
 
+--------------------------------------
 ### Bloco como ramificações if e when
 <p>Ambos if e when pode ter blocos como ramificações, a última expressão do bloco é o resultado</p>
 
@@ -174,6 +177,7 @@ fun avaliacao(expressao: ExpressaoA) :Int =
         else -> throw IllegalArgumentException ("Expressão desconhecida")
     }
 ```
+--------------------------------------
 
 ### Estrutura de Repetição
 <p>As estrutura de repetição While e Do While é igual ao Java, porém o for utiliza o conceito de range.</p>
@@ -193,3 +197,32 @@ fun main(args: Array<String>) {
 }
 ```
 
+##### Repetição em um map
+
+```kotlin
+    val binaryRepresentation = TreeMap<Char, String>()
+    for (c in 'A'..'F'){
+        val binary = Integer.toBinaryString(c.code)
+        binaryRepresentation[c] = binary
+    }
+
+    for ((letter, value ) in binaryRepresentation){
+        println("$letter - $value")
+    }
+```
+
+--------------------------------------
+
+### Operador In
+
+```kotlin
+fun main(args: Array<String>) {
+    println("7 é letra: ${isLetter('7')}")
+    println("B é letra: ${isLetter('B')}")
+    println("5 não é digito: ${isLetter('5')}")
+}
+
+fun isLetter(c: Char) = c in 'a'..'z' || c in 'A'..'Z'
+
+fun isNotDigit(c: Char) = c !in '0' .. '9'
+```
