@@ -7,7 +7,7 @@ fun main(args: Array<String>) {
 }
 
 // Corpo de bloco
-fun max(a: Int, b: Int): Int {
+fun max(a: Int, b: Int=7): Int {
     return if (a > b) a else b
 }
 
